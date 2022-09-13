@@ -60,10 +60,10 @@
   dependencies:
     cross-fetch "^3.0.4"
 
-"@appbaseio/designkit@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.11.0.tgz#6f0fce707239a8255ef3127b5889703368773cb8"
-  integrity sha512-qX5Ych7sgPKl4IP7jWiT7ISalDpky7IMS9fNxDH/M9rDsJ46AZABaC8xnuODWQPWtA0qHbW35TWltFxjfQ5TJA==
+"@appbaseio/designkit@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.13.0.tgz#79e184cb7ed283c7a07ccc7c75d8a3236a58b7ea"
+  integrity sha512-qZSXG1vrhUflrQUFhEDxT/iAdBZc75YNhyEg69nzQipRkDJVvj0cRo2D4CSLHWBjznKB9eMAY8oNq/LmFAMBJQ==
   dependencies:
     "@storybook/react" "^3.2.19"
     prop-types "^15.6.0"
@@ -5168,6 +5168,19 @@
   resolved "https://registry.yarnpkg.com/@turist/time/-/time-0.0.2.tgz#32fe0ce708ea0f4512776bd313409f1459976dda"
   integrity sha512-qLOvfmlG2vCVw5fo/oz8WAZYlpe5a5OurgTj3diIxJCdjRHpapC+vQCz3er9LV79Vcat+DifBjeAhOAdmndtDQ==
 
+"@typeform/embed-react@^1.13.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@typeform/embed-react/-/embed-react-1.20.0.tgz#4523f45e344eb2b7d0fc3d0c70484d1d9cdce43b"
+  integrity sha512-IJUo+LrINMoWrPriGmSARnNq5HVh4v0bju+wOzgavnBAWtbPBOyo8J9ekz42uPFDsGEnb2w8tS1wJUe3labsdg==
+  dependencies:
+    "@typeform/embed" "1.37.1"
+    fast-deep-equal "^3.1.3"
+
+"@typeform/embed@1.37.1", "@typeform/embed@^1.34.1":
+  version "1.37.1"
+  resolved "https://registry.yarnpkg.com/@typeform/embed/-/embed-1.37.1.tgz#f1d2dfe7199ca6d22d862a59107c953583fc069f"
+  integrity sha512-CE/4HxyCGqaoi+P8XvZA6Uzy+Ob6SBsSTseFkpZDLkOp+sy5Nbr17yqAJbn4fPi1BXeYK7jkg8+PGBEbxdeUCw==
+
 "@types/babel__core@^7.1.0":
   version "7.1.19"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.19.tgz#7b497495b7d1b4812bdb9d02804d0576f43ee460"
@@ -6820,6 +6833,11 @@ acorn@^8.0.4, acorn@^8.5.0, acorn@^8.7.1:
   version "8.8.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
   integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
+
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==
 
 address@1.0.3:
   version "1.0.3"
@@ -16886,6 +16904,11 @@ gatsby-remark-images@6.9.0:
     query-string "^6.14.1"
     unist-util-select "^3.0.4"
     unist-util-visit-parents "^3.1.1"
+
+gatsby-remark-prismjs-copy-button@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs-copy-button/-/gatsby-remark-prismjs-copy-button-0.3.1.tgz#5d772d64b4fce0bee417c7ea7fe39b5a34403d62"
+  integrity sha512-/A3BuZSdmI62+uSitAbgqdoS3QtYX4kiz9DZZgc1qMqpPss07YTmU8dFuVNxnNDP13h9jAMfr3BxP7J60ATZSg==
 
 gatsby-remark-prismjs@6.9.0:
   version "6.9.0"
@@ -28382,6 +28405,15 @@ react-dom@16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
+react-dom@17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
+  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    scheduler "^0.20.2"
+
 react-dom@^16.1.1, react-dom@^16.2.0, react-dom@^16.7.0-alpha.2, react-dom@^16.8.3, react-dom@^16.8.6, react-dom@^16.9.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
@@ -28391,15 +28423,6 @@ react-dom@^16.1.1, react-dom@^16.2.0, react-dom@^16.7.0-alpha.2, react-dom@^16.8
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.19.1"
-
-react-dom@^17.0.0:
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
-  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    scheduler "^0.20.2"
 
 react-draggable@^4.0.3:
   version "4.4.5"
@@ -28853,7 +28876,7 @@ react-responsive-modal@^4.0.1:
     prop-types "^15.6.2"
     react-transition-group "^4.0.0"
 
-react-router-dom@4.3.1, react-router-dom@^4.2.2:
+react-router-dom@^4.2.2, react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   integrity sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==
@@ -29156,6 +29179,14 @@ react@16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
+react@17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
 react@^16.1.1, react@^16.2.0, react@^16.7.0-alpha.2, react@^16.8.3, react@^16.8.6, react@^16.9.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
@@ -29164,14 +29195,6 @@ react@^16.1.1, react@^16.2.0, react@^16.7.0-alpha.2, react@^16.8.3, react@^16.8.
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-react@^17.0.0:
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
-  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 react@~16.8.6:
   version "16.8.6"
@@ -35595,6 +35618,11 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yarn@^1.22.18:
+  version "1.22.19"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.19.tgz#4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==
 
 yeast@0.1.2:
   version "0.1.2"
