@@ -3,7 +3,7 @@ import types from '@appbaseio/reactivecore/lib/utils/types';
 import { bool } from 'prop-types';
 import React from 'react';
 import { TabLink, TabContainer } from '../../styles/Tabs';
-import { getNestedProperty } from '../../utils';
+import { connect } from '../../utils';
 
 import SingleDataList from './SingleDataList';
 
@@ -17,10 +17,54 @@ import SingleDataList from './SingleDataList';
  */
 
 const TabDataList = (props) => {
-	const { renderItem } = props;
+	const {
+		renderItem, handleChange, data, value, total,
+	} = props;
 	const defaultItem = item =>
 		`${item.label} ${props.showCount && item.count ? `(${item.count})` : ''}`;
 
+	return (
+		<TabContainer vertical={props.displayAsVertical}>
+			{props.selectAllLabel ? (
+				<TabLink
+					onClick={() => handleChange(props.selectAllLabel)}
+					selected={props.selectAllLabel === value}
+					vertical={props.displayAsVertical}
+					key={props.selectAllLabel}
+				>
+					{defaultItem({
+						label: props.selectAllLabel,
+						value: props.selectAllLabel,
+						count: props.showCount && total,
+					})}
+				</TabLink>
+			) : null}
+			{data.map(item => (
+				<TabLink
+					onClick={() => handleChange(item.label)}
+					selected={item.label === value}
+					vertical={props.displayAsVertical}
+					key={item.label}
+				>
+					{renderItem
+						? renderItem(item.label, item.count, item.label === value)
+						: defaultItem(item)}
+				</TabLink>
+			))}
+		</TabContainer>
+	);
+};
+
+const mapStateToProps = (state, props) => ({
+	total: state.hits[props.componentId] && state.hits[props.componentId].total,
+});
+
+const ConnectedComponent = connect(
+	mapStateToProps,
+)(props => <TabDataList {...props} />);
+
+
+const MainComponent = (props) => {
 	if (hasCustomRenderer(props) || props.showRadio) {
 		return <SingleDataList {...props} />;
 	}
@@ -28,49 +72,21 @@ const TabDataList = (props) => {
 		<SingleDataList
 			{...props}
 			showSearch={props.showSearch}
-			render={({
-				data, value, handleChange, rawData,
-			}) => (
-				<TabContainer vertical={props.displayAsVertical}>
-					{props.selectAllLabel ? (
-						<TabLink
-							onClick={() => handleChange(props.selectAllLabel)}
-							selected={props.selectAllLabel === value}
-							vertical={props.displayAsVertical}
-							key={props.selectAllLabel}
-						>
-							{defaultItem({
-								label: props.selectAllLabel,
-								value: props.selectAllLabel,
-								count: props.showCount && getNestedProperty(rawData, 'hits.total.value'),
-							})}
-						</TabLink>
-					) : null}
-					{data.map(item => (
-						<TabLink
-							onClick={() => handleChange(item.label)}
-							selected={item.label === value}
-							vertical={props.displayAsVertical}
-							key={item.label}
-						>
-							{renderItem
-								? renderItem(item.label, item.count, item.label === value)
-								: defaultItem(item)}
-						</TabLink>
-					))}
-				</TabContainer>
+			render={renderProps => (
+				<ConnectedComponent {...renderProps} {...props} />
 			)}
 		/>
 	);
 };
 
-TabDataList.defaultProps = {
+
+MainComponent.defaultProps = {
 	displayAsVertical: false,
 	showRadio: false,
 	showSearch: false,
 };
 
-TabDataList.propTypes = {
+MainComponent.propTypes = {
 	displayAsVertical: bool,
 	children: types.func,
 	componentId: types.stringRequired,
@@ -89,4 +105,9 @@ TabDataList.propTypes = {
 	endpoint: types.endpoint,
 	selectAllLabel: types.string,
 };
-export default TabDataList;
+
+TabDataList.propTypes = {
+	...MainComponent.propTypes,
+};
+
+export default MainComponent;
