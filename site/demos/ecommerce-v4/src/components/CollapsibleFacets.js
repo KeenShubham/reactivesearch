@@ -15,7 +15,6 @@ export default function CollapsibleFacets({ isMobile }) {
 					mode="multiple"
 					URLParams
 					dataField={['class.keyword', 'subclass.keyword']}
-					react={{ and: ['SubCategory', 'Color', 'SearchBox'] }}
 				/>
 			</CollapsePanel>
 		</Collapse>
