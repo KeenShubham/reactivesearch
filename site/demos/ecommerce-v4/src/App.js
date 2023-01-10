@@ -1,5 +1,5 @@
 import { ReactiveBase, ReactiveList, SearchBox } from '@appbaseio/reactivesearch';
-import { BackTop, Col, Layout, Row, Typography } from 'antd';
+import { Col, Layout, Row, Typography } from 'antd';
 import reactivesearchLogo from './reactivesearch-icon.png';
 
 import './App.css';
