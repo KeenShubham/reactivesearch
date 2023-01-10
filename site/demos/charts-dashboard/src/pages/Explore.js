@@ -94,36 +94,6 @@ function Explore({ history }) {
 					</Card>
 				</Col>
 			</Row>
-			<Row>
-				<ReactiveList
-					componentId="ListComponent"
-					dataField="albumTitle"
-					pagination={false}
-					infiniteScroll={false}
-					showResultStats={false}
-					renderNoResults={() => null}
-					react={{ and: ['Category', 'SubCategory', 'ReviewAverage', 'Color'] }}
-					className="fullWidth"
-					render={({ data, ...props }) => {
-						return (
-							<Card
-								className="fullWidth"
-								onClick={() => {
-									const urlLocation = new URL(window.location.href);
-									const urlSearchParams = new URLSearchParams(urlLocation.search);
-									history.push(`/search?${urlSearchParams}`);
-								}}
-							>
-								<h1 className="resultsCard">
-									{!props.loading
-										? `${props.resultStats.numberOfResults} matched the above criteria. View now.`
-										: 'View Search Results'}
-								</h1>
-							</Card>
-						);
-					}}
-				/>
-			</Row>
 		</ReactiveBase>
 	);
 }
