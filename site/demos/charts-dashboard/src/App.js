@@ -53,7 +53,7 @@ function App() {
 								<Search />
 							</Route>
 							<Route path="/">
-								<Redirect to="/explore" />
+								<Redirect to="/search" />
 							</Route>
 						</Switch>
 					</Content>
