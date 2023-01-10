@@ -95,9 +95,6 @@ function App() {
 								/>
 							</Col>
 						</Row>
-						<BackTop className="backToTop">
-							<div className="p10 text-center">&#11014;</div>
-						</BackTop>
 					</Content>
 				</Layout>
 			</Layout>
