@@ -52,7 +52,6 @@ function App() {
 									className="result-list-container"
 									from={0}
 									size={5}
-									showExport
 									innerClass={{ resultStats: 'result-stats' }}
 									renderItem={(data) => {
 										return (
