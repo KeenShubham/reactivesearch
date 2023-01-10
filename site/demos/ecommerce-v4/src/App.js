@@ -1,16 +1,12 @@
-import { ReactiveBase, ReactiveList, SearchBox, SelectedFilters } from '@appbaseio/reactivesearch';
-import { BackTop, Col, Grid, Layout, Row, Typography } from 'antd';
-import CollapsibleFacets from './components/CollapsibleFacets';
-import MobileFacets from './components/MobileFacets';
+import { ReactiveBase, ReactiveList, SearchBox } from '@appbaseio/reactivesearch';
+import { BackTop, Col, Layout, Row, Typography } from 'antd';
 import reactivesearchLogo from './reactivesearch-icon.png';
 
 import './App.css';
 
 const { Header, Content } = Layout;
-const { useBreakpoint } = Grid;
 
 function App() {
-	const breakpointActive = useBreakpoint();
 	return (
 		<ReactiveBase
 			app="best-buy-dataset"
@@ -29,9 +25,6 @@ function App() {
 					<Content className="p10">
 						<Row>
 							<Row className="p10 fullWidth">
-								<SelectedFilters />
-							</Row>
-							<Row className="p10 fullWidth">
 								<SearchBox
 									dataField={['albumTitle', 'name']}
 									componentId="SearchBox"
@@ -41,18 +34,13 @@ function App() {
 							</Row>
 						</Row>
 						<Row className="relative">
-							<Col xs={24} md={8} className="p10">
-								{breakpointActive.sm && <CollapsibleFacets />}
-								{breakpointActive.xs && <MobileFacets />}
-							</Col>
-							<Col md={16} xs={24}>
+							<Col md={24}>
 								<ReactiveList
 									componentId="SearchResult"
 									dataField="original_title"
 									className="result-list-container"
 									from={0}
 									size={5}
-									showExport
 									innerClass={{ resultStats: 'result-stats' }}
 									renderItem={(data) => {
 										return (
