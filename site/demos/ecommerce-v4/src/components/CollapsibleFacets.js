@@ -10,30 +10,16 @@ export default function CollapsibleFacets({ isMobile }) {
 				isMobile ? ['Category'] : ['Category', 'Sub-Category', 'Ratings', 'Color']
 			}
 		>
-			<CollapsePanel header={<h3>Category</h3>} key="Sub-Category">
+			<CollapsePanel header={<h3>Color</h3>} key="Color">
 				<ReactiveChart
-					componentId="SubCategory"
-					dataField="categoryPath.name.keyword"
-					chartType="bar"
+					componentId="Color"
+					dataField="color.keyword"
+					chartType="pie"
 					type="term"
 					URLParams
 					useAsFilter
 					loader="Loading..."
-					setOption={(data) => {
-						let options = ReactiveChart.getOption(data);
-						let xAxis = options && options.xAxis;
-						let yAxis = options && options.yAxis;
-						xAxis.axisLabel = {
-							rotate: 90,
-							fontSize: 7,
-						};
-						yAxis.axisLabel = {
-							fontSize: 8,
-						};
-						options.xAxis = xAxis;
-						return options;
-					}}
-					react={{ and: ['Category', 'Color', 'SearchBox'] }}
+					react={{ and: ['Category', 'SubCategory', 'SearchBox'] }}
 				/>
 			</CollapsePanel>
 		</Collapse>
