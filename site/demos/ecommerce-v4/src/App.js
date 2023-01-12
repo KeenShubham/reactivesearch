@@ -1,5 +1,5 @@
 import { ReactiveBase, ReactiveList, SearchBox, SelectedFilters } from '@appbaseio/reactivesearch';
-import { BackTop, Col, Grid, Layout, Row, Typography } from 'antd';
+import { Col, Grid, Layout, Row, Typography } from 'antd';
 import CollapsibleFacets from './components/CollapsibleFacets';
 import MobileFacets from './components/MobileFacets';
 import reactivesearchLogo from './reactivesearch-icon.png';
