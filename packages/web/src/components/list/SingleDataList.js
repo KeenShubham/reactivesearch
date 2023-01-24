@@ -9,7 +9,6 @@ import {
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import {
 	checkValueChange,
-	checkPropChange,
 	getClassName,
 	checkSomePropChange,
 	getQueryOptions,
@@ -26,6 +25,7 @@ import { getInternalComponentID } from '@appbaseio/reactivecore/lib/utils/transf
 import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
 import types from '@appbaseio/reactivecore/lib/utils/types';
 import styled from '@emotion/styled';
+import { arrayOf, number, shape } from 'prop-types';
 
 import Title from '../../styles/Title';
 import Input from '../../styles/Input';
@@ -88,23 +88,11 @@ class SingleDataList extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'showCount'], () => {
 			this.updateQuery(this.state.currentValue, this.props);
 
 			if (this.props.showCount) {
 				this.updateQueryOptions(this.props);
-			}
-		});
-
-		checkPropChange(this.props.data, prevProps.data, () => {
-			if (this.props.showCount) {
-				this.updateQueryOptions(this.props);
-			}
-		});
-
-		checkPropChange(this.props.options, prevProps.options, () => {
-			if (this.props.options[this.props.dataField]) {
-				this.updateStateOptions(this.props.options[this.props.dataField].buckets);
 			}
 		});
 
@@ -258,36 +246,6 @@ class SingleDataList extends Component {
 		}
 	};
 
-	updateStateOptions = (bucket) => {
-		if (bucket) {
-			const bucketDictionary = bucket.reduce(
-				(obj, item) => ({
-					...obj,
-					[item.key]: item.doc_count,
-					[item.key_as_string]: item.doc_count,
-				}),
-				{},
-			);
-			const { options } = this.state;
-			const newOptions = options.map((item) => {
-				if (bucketDictionary[item.value]) {
-					return {
-						...item,
-						count: bucketDictionary[item.value] || 0,
-					};
-				}
-				return {
-					...item,
-					count: 0,
-				};
-			});
-
-			this.setState({
-				options: newOptions,
-			});
-		}
-	};
-
 	handleInputChange = (e) => {
 		const { value } = e.target;
 		this.setState({
@@ -349,9 +307,29 @@ class SingleDataList extends Component {
 	}
 
 	get listItems() {
-		const { options } = this.state;
+		const buckets = this.props.buckets || [];
+		const bucketDictionary = buckets.reduce(
+			(obj, item) => ({
+				...obj,
+				[item.key]: item.doc_count,
+				[item.key_as_string]: item.doc_count,
+			}),
+			{},
+		);
+		const newOptions = this.props.data.map((item) => {
+			if (bucketDictionary[item.value]) {
+				return {
+					...item,
+					count: bucketDictionary[item.value] || 0,
+				};
+			}
+			return {
+				...item,
+				count: 0,
+			};
+		});
 
-		const listItems = options.filter((item) => {
+		const listItems = newOptions.filter((item) => {
 			if (this.props.showSearch && this.state.searchTerm) {
 				return replaceDiacritics(item.label)
 					.toLowerCase()
@@ -461,7 +439,7 @@ class SingleDataList extends Component {
 											) : (
 												<Span>
 													{item.label}
-													{showCount && item.count && (
+													{showCount && item.count ? (
 														<span
 															className={
 																getClassName(
@@ -472,7 +450,7 @@ class SingleDataList extends Component {
 														>
 																&nbsp;({item.count})
 														</span>
-													)}
+													) : null}
 												</Span>
 											)}
 										</Label>
@@ -493,6 +471,7 @@ SingleDataList.propTypes = {
 	total: types.number,
 	selectedValue: types.selectedValue,
 	options: types.options,
+	buckets: arrayOf(shape({ doc_count: number })),
 	rawData: types.rawData,
 	setCustomQuery: types.funcRequired,
 	enableAppbase: types.bool,
@@ -560,6 +539,12 @@ const mapStateToProps = (state, props) => ({
 		props.nestedField && state.aggregations[props.componentId]
 			? state.aggregations[props.componentId].reactivesearch_nested
 			: state.aggregations[props.componentId],
+	buckets: props.nestedField && state.aggregations[props.componentId]
+		? state.aggregations[props.componentId].reactivesearch_nested[props.dataField]
+		&& state.aggregations[props.componentId].reactivesearch_nested[props.dataField].buckets
+		: state.aggregations[props.componentId]
+		&& state.aggregations[props.componentId][props.dataField]
+		&& state.aggregations[props.componentId][props.dataField].buckets,
 	enableAppbase: state.config.enableAppbase,
 });
 
