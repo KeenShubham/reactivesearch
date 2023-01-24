@@ -140,7 +140,7 @@ class RangeSlider extends Component {
 			});
 		});
 
-		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize'], () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateQueryOptions(this.props);
 			this.handleChange(this.state.currentValue, this.props);
 		});

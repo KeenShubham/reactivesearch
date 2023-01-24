@@ -79,7 +79,7 @@ class MultiDataList extends Component {
 		const valueArray
 			= typeof this.state.currentValue === 'object' ? Object.keys(this.state.currentValue) : [];
 
-		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize'], () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateQuery(valueArray, this.props);
 
 			if (this.props.showCount) {

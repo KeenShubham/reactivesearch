@@ -147,11 +147,11 @@ class MultiDropdownList extends Component {
 			this.updateQuery(valueArray, this.props);
 		}
 
-		checkSomePropChange(this.props, prevProps, ['size', 'sortBy'], () =>
+		checkSomePropChange(this.props, prevProps, ['size'], () =>
 			this.updateQueryOptions(this.props),
 		);
 
-		checkPropChange(this.props.dataField, prevProps.dataField, () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateQueryOptions(this.props);
 			this.updateQuery(valueArray, this.props);
 		});

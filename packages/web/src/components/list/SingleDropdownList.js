@@ -106,7 +106,7 @@ class SingleDropdownList extends Component {
 				});
 			}
 		});
-		checkSomePropChange(this.props, prevProps, ['size', 'sortBy'], () =>
+		checkSomePropChange(this.props, prevProps, ['size'], () =>
 			this.updateQueryOptions(this.props),
 		);
 
@@ -121,7 +121,8 @@ class SingleDropdownList extends Component {
 			this.updateQuery(this.state.currentValue, this.props);
 		}
 
-		checkPropChange(this.props.dataField, prevProps.dataField, () => {
+
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateQueryOptions(this.props);
 			this.updateQuery(this.state.currentValue, this.props);
 		});

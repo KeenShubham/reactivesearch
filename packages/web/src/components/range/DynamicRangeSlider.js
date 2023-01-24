@@ -226,7 +226,7 @@ class DynamicRangeSlider extends Component {
 			this.setReact(this.props);
 		});
 
-		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize'], () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateRangeQueryOptions(this.props);
 		});
 

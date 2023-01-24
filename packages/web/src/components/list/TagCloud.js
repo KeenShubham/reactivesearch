@@ -77,11 +77,11 @@ class TagCloud extends Component {
 				options: buckets,
 			});
 		});
-		checkSomePropChange(this.props, prevProps, ['size', 'sortBy'], () =>
+		checkSomePropChange(this.props, prevProps, ['size'], () =>
 			this.updateQueryOptions(this.props),
 		);
 
-		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize'], () => {
+		checkSomePropChange(this.props, prevProps, ['dataField', 'nestedField', 'aggregationSize', 'sortBy'], () => {
 			this.updateQueryOptions(this.props);
 			this.updateQuery(Object.keys(this.state.currentValue), this.props);
 		});
